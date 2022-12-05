@@ -1,0 +1,193 @@
+:root{
+  --cor-primaria: #e21;
+  --cor-primaria-escura: #900;
+  --fundo-1: #f7f7f7;
+  --fundo-2: #fff;
+  --texto:#000000;
+  --subtitulo: rgba(0,0,0,0.2);
+  --onda: url("./img/onda.svg");
+}
+@media (prefers-color-scheme:dark){
+  :root {
+    --fundo-1: #111111;
+    --fundo-2: #000000;
+    --texto: #ffffff;
+    --subtitulo: rgba(255,255,255,0.2);
+    --onda: url("./img/onda-escura.svg");
+  }
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fundo-1);
+  margin: 0px;
+  display: grid; /*alinhar conteudo ao centro*/
+  justify-items: center; /*alinhar conteudo ao centro*/
+  gap: 60px; /*criar espaçamento entre os conteudos*/
+  margin-top: 60px;
+  color:var(--texto);
+}
+.logo-img {
+  max-width: 100%; /*para a imagem nao crescer mais que o tamanho da tela*/
+  display: block;
+}
+.nav {
+  display: flex; /*alinhados um ao lado do outro*/
+  flex-wrap: wrap; /*quebra de conteudo quando a tela é diminuida*/
+  gap: 20px; /*separar os itens*/
+  justify-content: center; /*alinhar conteudo ao centro, sempre que o item é quebrado*/
+}
+.lista-link {
+  display: flex;
+  gap: 3rem;
+}
+.link {
+  background: var(--fundo-2);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  list-style: none;
+  border: solid var(--fundo-2) 2px; /*para na hora que passar o mouse, o link no "saltar"*/
+}
+.link:hover {
+  border-color:var(--cor-primaria-escura);
+}
+.link-item {
+  text-decoration: none; /*tirar sublinhado dos links*/
+  text-transform: uppercase;
+  color:var(--texto);
+}
+p,
+h1,
+h2,
+h3 {
+  margin: 0px; /*resetar as margens para poder personalizar*/
+}
+p {
+  font-size: 1.25rem;
+  line-height: 1.3rem; /*espçamento entre linhas*/
+}
+.conteudo {
+  display: grid; /*dividir o conteudo em 2 colunas*/
+  grid-template-columns: 1fr 1fr; /*definir o tamanho das colunas*/
+  max-width: 1000px; /*definir limite de conteudo*/
+}
+.introducao {
+  background: var(--fundo-2);
+  padding: 40px;
+  text-align: right; /*alinhar o texto a direita*/
+  position: relative;
+  display: grid;
+  gap: 20px; /*separar o conteudo*/
+  align-content: center;
+  justify-items: end;
+}
+.introducao::before {
+  /*criar o detalhe vermelho*/
+  content: ""; /*para o detalhe aparecer ele precisa de um conteúdo*/
+  width: 60px;
+  height: 4px;
+  background: var(--cor-primaria);
+  position: absolute;
+  top: 30px;
+  right: -30px;
+}
+.introducao-cover img{ /*para a imagem ter o mesmo tamanho do texto lateral*/
+  object-fit: cover;
+  height: 100%;
+}
+.titulo {
+  font-size: 2rem;
+}
+.botao {
+  background:var(--cor-primaria);
+  color:#ffffff;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.botao:hover {
+  background: rgb(94, 1, 1);
+}
+.imagem {
+  max-width: 100%;
+}
+.texto2 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  color:var(--subtitulo);
+  text-align: right;
+  padding: 2.5rem;
+  align-self: center; /*"fala" somente com um item dentro do grid*/
+  background-image: var(--onda);
+  /*word-break:break-all; quebra palavra*/
+}
+.vantagens {
+  background: var(--fundo-2);
+  padding: 2.5rem;
+}
+.vantagens-item {
+  display: grid; /*para gerar + 2 colunas - icones e texto*/
+  grid-template-columns: auto 1fr; /*definir o tamanho das colunas*/
+  gap: 10px 20px;
+  padding: 1.25rem;
+}
+.vantagens-item:hover {
+  border-left: solid 4px var(--cor-primaria-escura); /*colocar borda somente de um lado quando passado o mouse*/
+}
+.vantagens-item p {
+  grid-column: 2; /*colocar conteudo na coluna especifica*/
+}
+.vantagens-item:nth-child(odd) {
+  background: var(--fundo-1); /*colorir itens ímpares da lista*/
+}
+.rodape {
+  background: var(--fundo-2);
+  padding: 2.5rem;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box; /*respeitar o tamanho da tela, sem criar a barra de lado*/
+}
+@media (max-width: 1000px){
+  .conteudo-vantagem{
+    grid-template-columns: 1fr;
+  }
+  .texto2{
+    text-align: center;
+  }
+}
+@media (max-width: 790px){
+  body{
+    gap: 30px;
+    margin-top: 20px;
+  }
+  .conteudo{
+    grid-template-columns: 1fr;
+  }
+  .introducao{
+    align-content:left;
+    justify-items: start;
+  }
+  .introducao::before{
+    display: none;
+  }
+  .titulo{
+    font-size: 2rem;
+  }
+   .texto{
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: start;
+  }
+  .rodape{
+    text-align: center;
+  }
+}
+@media (max-width: 400px){
+  .lista-link{
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    padding: 0px;
+  }
+}
